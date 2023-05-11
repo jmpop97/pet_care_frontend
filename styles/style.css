@@ -2,12 +2,35 @@ h1 {
     font-size: 2rem;
     text-align: center;
     margin: auto;
-    color: violet;
+    color: rgba(252, 125, 7, 0.87);
 }
 
-.service {
-    font-size: 2rem;
+.wrap {
+    margin-top: 50px;
+}
+
+.signinup_form {
+    width: 550px;
+    height: 550px;
+    border-radius: 10%;
     text-align: center;
-    margin: auto;
-    color: rgb(20, 28, 68);
+    text-align: justify;
+    border:2px solid #000;
+    background-color: #fff;
+    margin: 150px auto;
+    padding: 50px;
+}
+
+.button_container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+#button_signin {
+    background-color: black;
+    border-color:black;
+    color:white;
+    border-radius: 30px;
+    margin-top: 30px;
+    width: 98%;
 }
