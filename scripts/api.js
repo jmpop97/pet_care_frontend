@@ -1,3 +1,7 @@
+const frontend_base_url = "http://127.0.0.1:5500"
+const backend_base_url = "http://127.0.0.1:8000"
+
+
 async function postOwner() {
     const title = document.getElementById('title').value
     const content = document.getElementById('content').value
@@ -20,7 +24,7 @@ async function postOwner() {
 
     let token = localStorage.getItem("access")
 
-    const response = await fetch('http://127.0.0.1:8000/owner/', {
+    const response = await fetch(`${backend_base_url}/owner/`, {
         method: 'POST',
         headers: {
             'Authorization': `Bearer ${token}`
@@ -28,4 +32,25 @@ async function postOwner() {
         body: formdata
     })
     console.log(response)
+}
+
+async function getOwners() {
+    const response = await fetch(`${backend_base_url}/owner/`)
+
+    if (response.status == 200) {
+        const response_json = await response.json()
+        return response_json
+    } else {
+        alert("불러오는데 실패하였습니다.")
+    }
+}
+
+async function getOwner(ownerId) {
+    const response = await fetch(`${backend_base_url}/owner/${ownerId}/`)
+    if (response.status == 200) {
+        const response_json = await response.json()
+        return response_json
+    } else {
+        alert("불러오는데 실패하였습니다.")
+    }
 }
