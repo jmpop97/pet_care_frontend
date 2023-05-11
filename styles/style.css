@@ -25,12 +25,3 @@ h1 {
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
-
-#button_signin {
-    background-color: black;
-    border-color:black;
-    color:white;
-    border-radius: 30px;
-    margin-top: 30px;
-    width: 98%;
-}
