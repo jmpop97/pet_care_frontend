@@ -44,3 +44,13 @@ async function getOwners() {
         alert("불러오는데 실패하였습니다.")
     }
 }
+
+async function getOwner(ownerId) {
+    const response = await fetch(`${backend_base_url}/owner/${ownerId}/`)
+    if (response.status == 200) {
+        const response_json = await response.json()
+        return response_json
+    } else {
+        alert("불러오는데 실패하였습니다.")
+    }
+}
