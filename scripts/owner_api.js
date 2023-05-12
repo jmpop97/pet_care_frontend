@@ -2,6 +2,17 @@ const frontend_base_url = "http://127.0.0.1:5500"
 const backend_base_url = "http://127.0.0.1:8000"
 
 
+function checkSigninPost() {
+    const payload = localStorage.getItem("payload");
+    const postButton = document.getElementById("owner_post_login_check")
+    if(!(payload)){
+        postButton.style.display = "none";
+    }
+}
+
+checkSigninPost()
+
+
 async function postOwner() {
     const title = document.getElementById('title').value
     const content = document.getElementById('content').value

@@ -1,3 +1,7 @@
+const frontend_base_url = "http://127.0.0.1:5500"
+const backend_base_url = "http://127.0.0.1:8000"
+
+
 // navbar 버튼이 아닌 주소로 signup.html쳐서 들어갔을때 로그인상태면 redirect하는 함수
 // api.js가 맨위에서 실행되어야 오류없이 실행됨
 function checkSignin() {

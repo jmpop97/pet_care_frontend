@@ -17,7 +17,10 @@ async function injectNavbar() {
         console.log(payload_parse.username)
         
         const intro = document.getElementById("intro")
-        intro.innerText = `${payload_parse.username}`
+        intro.innerText = `${payload_parse.username}님`
+
+        const mypage = document.getElementById("mypage")
+        mypage.innerText = "마이페이지"
 
 
         let navbarRight = document.getElementById("navbar-right")
