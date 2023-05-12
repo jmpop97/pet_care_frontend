@@ -40,7 +40,7 @@ async function postOwner() {
     }
 }
 
-async function updateOwner() {
+async function updateOwner(ownerID) {
     const title = document.getElementById('title').value
     const content = document.getElementById('content').value
     const charge = document.getElementById('charge').value
@@ -62,16 +62,32 @@ async function updateOwner() {
 
     let token = localStorage.getItem("access")
 
-    const response = await fetch(`${backend_base_url}/owner/`, {
-        method: 'POST',
+    const response = await fetch(`${backend_base_url}/owner/${ownerID}/`, {
+        method: 'PUT',
         headers: {
             'Authorization': `Bearer ${token}`
         },
         body: formdata
     })
     console.log(response)
-    if (response.status == 201) {
-        alert("글 작성 완료!")
+    if (response.status == 200) {
+        alert("글 수정 완료!")
+        window.location.replace(`${frontend_base_url}/pet_owner_list.html?owner_id=${ownerId}`)
+    } else {
+        alert(response.statusText)
+    }
+}
+
+async function deleteOwner(ownerID) {
+    let token = localStorage.getItem("access")
+    const response = await fetch(`${backend_base_url}/owner/${ownerID}/`, {
+        method: 'DELETE',
+        headers: {
+            'Authorization': `Bearer ${token}`
+        },
+    })
+    if (response.status == 204) {
+        alert("글 삭제 완료!")
         window.location.replace(`${frontend_base_url}/pet_owner_list.html`)
     } else {
         alert(response.statusText)
@@ -129,3 +145,39 @@ async function postComment(newComment, ownerId) {
     }
 }
 
+async function updateComment(newComment, commentId) {
+    let token = localStorage.getItem("access")
+    const response = await fetch(`${backend_base_url}/owner/${ownerId}/comment/${commentId}/`, {
+        method: 'PUT',
+        headers: {
+            'content-type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify({
+            "content": newComment,
+        })
+    })
+    if (response.status == 200) {
+        alert(response.statusText)
+        window.location.replace(`${frontend_base_url}/pet_owner_detail.html?owner_id=${ownerId}`)
+    } else {
+        alert(response.statusText)
+    }
+}
+
+
+async function deleteComment(commentID) {
+    let token = localStorage.getItem("access")
+    const response = await fetch(`${backend_base_url}/owner/${ownerId}/comment/${commentID}/`, {
+        method: 'DELETE',
+        headers: {
+            'Authorization': `Bearer ${token}`
+        },
+    })
+    if (response.status == 204) {
+        alert("댓글 삭제 완료!")
+        window.location.replace(`${frontend_base_url}/pet_owner_detail.html?owner_id=${ownerId}`)
+    } else {
+        alert(response.statusText)
+    }
+}
