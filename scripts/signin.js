@@ -1,9 +1,14 @@
-const frontend_base_url = "http://127.0.0.1:5500"
-const backend_base_url = "http://127.0.0.1:8000"
-
-window.onload = ()=>{
-    console.log("로딩되었음")
+// navbar 버튼이 아닌 주소로 signup.html쳐서 들어갔을때 로그인상태면 redirect하는 함수
+// api.js가 맨위에서 실행되어야 오류없이 실행됨
+function checkSignin() {
+    const payload = localStorage.getItem("payload");
+    if(payload){
+        window.location.replace(`${frontend_base_url}`)
+    }
 }
+
+checkSignin()
+
 
 // Signin 함수
 async function handleSignin() {
@@ -26,6 +31,7 @@ async function handleSignin() {
 }
 
 // Signin이라는 함수는 데이터 통신만 하고, Button함수에서 parsing, validation을. 각 함수 객체가 독립적일 수 있도록
+// button을 여기남기고 위에 fetch로 통신하는 부분을 api로?
 async function handleSigninButton() {
     const response = await handleSignin();
 
