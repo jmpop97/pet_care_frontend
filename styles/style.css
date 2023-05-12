@@ -1,8 +1,12 @@
-h1 {
-    font-size: 2rem;
-    text-align: center;
-    margin: auto;
-    color: rgba(252, 125, 7, 0.87);
+@font-face {
+    font-family: 'S-CoreDream-3Light';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+	font-family: 'S-CoreDream-3Light';
 }
 
 .wrap {
@@ -79,4 +83,79 @@ h1 {
 
 .margin-b {
     margin-bottom: 2px;
+}
+
+.change_pass_ment {
+    color: black;
+    font-size: 1rem;
+    /* margin-top: 20px; */
+}
+
+.main_banner {
+    width: 300vw;
+    transition: transform 0.5s;
+}
+
+.main_banner_img {
+    width: 100vw;
+    float: left;
+}
+
+.main_banner_img img {
+    width: 100%;
+}
+
+.content {
+    margin: 50px 300px;
+    text-align: center;
+    line-height: 200%;
+    animation: slide 2s ease-out;
+    font-size: 1.2rem;
+}
+
+.pets div {
+    height: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.btn_ {
+    margin: 10px auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    border: 0.2rem outset orange;
+    border-radius: 7px;
+    padding: 0.5rem;
+    width: 220px;
+}
+
+.btn_ button {
+    margin: 0 5px;
+}
+
+@keyframes slide {
+    from {
+        margin-left: -300px;
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes backslide {
+    from {
+        opacity: 1;
+    }
+    to {
+        margin-left: -300px;
+        opacity: 0;
+    }
+}
+
+@media (max-width: 1200px){
+    .content{
+        margin: 50px 50px;
+    }
 }

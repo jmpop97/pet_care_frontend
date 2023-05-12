@@ -44,6 +44,13 @@ window.onload = async function loadSitters() {
         // 구인 상태
         const newIsReserved = document.createElement("p")
         newIsReserved.setAttribute("class", "card-text")
+        if(sitter.is_reserved == "미완료"){
+            newIsReserved.style.color = "red";
+        }else if(sitter.is_reserved == "예약중"){
+            newIsReserved.style.color = "#ff8040";
+        }else if(sitter.is_reserved == "완료"){
+            newIsReserved.style.color = "green";
+        }
         newIsReserved.innerText = sitter.is_reserved
         newCardBody.appendChild(newIsReserved)
         // 게시글 제목

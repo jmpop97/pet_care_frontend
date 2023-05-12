@@ -95,6 +95,13 @@ async function loadOwner(ownerId) {
     // 예약상태
     const ownerIsReserved = document.getElementById("owner-isreserved")
     ownerIsReserved.innerText = response.is_reserved
+    if(response.is_reserved == "미완료"){
+        ownerIsReserved.style.color = "red";
+    }else if(response.is_reserved == "예약중"){
+        ownerIsReserved.style.color = "#ff8040";
+    }else if(response.is_reserved == "완료"){
+        ownerIsReserved.style.color = "green";
+    }
     // 예약날짜
     const ownerDateTime = document.getElementById("owner-datetime")
     ownerDateTime.innerText = response.reservation_start + ' - ' + response.reservation_end
