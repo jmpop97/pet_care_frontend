@@ -11,6 +11,7 @@ window.onload = async function () {
         updateButton.setAttribute("type", "button")
         updateButton.setAttribute("onclick", `updateSitter(${sitterId})`)
         updateButton.innerHTML = "수정하기"
+        updateButton.style.width = "100px"
         const buttons = document.getElementById("post-form")
         buttons.appendChild(updateButton)
 
@@ -34,6 +35,7 @@ window.onload = async function () {
         createButton.setAttribute("type", "button")
         createButton.setAttribute("onclick", "postOwner()")
         createButton.innerHTML = "작성하기"
+        createButton.style.width = "100px"
         const buttons = document.getElementById("post-form")
         buttons.appendChild(createButton)
     }

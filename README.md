@@ -4,7 +4,7 @@ Backend : https://github.com/jmpop97/pet_care
 ## Target
 https://www.figma.com/file/qBrLy5BJyRnKLNZ32xrj5O/Pet_care?type=design&node-id=0-1&t=nCaJG7kh4YvVewX7-0
 
-## Todo✅❌
+## Checklist
 
 1. Vanilla JS fetch로 django Backend와 연결✅
 2. 온도 -> 평점 받아오기 구현
@@ -16,3 +16,9 @@ https://www.figma.com/file/qBrLy5BJyRnKLNZ32xrj5O/Pet_care?type=design&node-id=0
 8. 글쓴이가 아니면 글쓰기 버튼 안뜨게✅
 9. 안녕하세요 - > 나에게 달린 리뷰✅
 10. 마이페이지 자기글 모아보기❌(ERD설계실패. 받아와야할 데이터가 너무 번거롭게 많은상황)
+11. 모델에 reservation date 검증이 정의되어서 admin으로 과거 데이터를 생성하려 하면 되지를 않고, 예약 기간을 잠시후로 설정해서 완료되기를 기다리고, 완료로 설정해도 예약중이라고만 프론트에 뜨는 상황입니다 ㅠ 완료는 초록색으로 설정했는데 한번 보고싶어요..
+12. 미완료라는 표현 조금 어색하다
+13. 데이터들을 자바스크립트로 불러오고있고, 작성하기/수정하기 버튼은 그냥 실체가없이 자바스크립트만으로 생성하고 있는 방식이라 위치지정을 어떤식으로 해야할 지 모르겠다
+14. 리스트에 글작성자 없는데, 물어보기
+15. usernaem(ID)로 뜨는 것들 nickname으로 다 바꾸는게 좋을 것 같긴한데 엄청 번거로울 예정
+16. 글 작성폼 설명달기
