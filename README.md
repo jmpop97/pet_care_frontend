@@ -6,13 +6,13 @@ https://www.figma.com/file/qBrLy5BJyRnKLNZ32xrj5O/Pet_care?type=design&node-id=0
 
 ## Todo✅❌
 
-1. Vanilla JS로 django Backend와 연결✅
+1. Vanilla JS fetch로 django Backend와 연결✅
 2. 온도 -> 평점 받아오기 구현
 3. location, species 자동검색추천기능 시도 (매우어려움)
 4. 리뷰페이지
 5. 메인페이지
-6. api.js 어케할건지
-7. 로그인 상태 아니면 글쓰기 버튼 없게 
+6. api.js 어케할건지✅
+7. 로그인 상태 아니면 글쓰기 버튼 없게 ✅
 8. 글쓴이가 아니면 글쓰기 버튼 안뜨게✅
 9. 안녕하세요 - > 나에게 달린 리뷰✅
-10. 마이페이지 나랑 연결
+10. 마이페이지 자기글 모아보기❌(ERD설계실패. 받아와야할 데이터가 너무 번거롭게 많은상황)

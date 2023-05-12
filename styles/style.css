@@ -1,8 +1,20 @@
+@font-face {
+    font-family: 'S-CoreDream-3Light';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+* {
+	font-family: 'S-CoreDream-3Light';
+}
+
 h1 {
     font-size: 2rem;
     text-align: center;
     margin: auto;
-    color: rgba(252, 125, 7, 0.87);
+    color: #ff8040;
 }
 
 .wrap {
@@ -79,4 +91,10 @@ h1 {
 
 .margin-b {
     margin-bottom: 2px;
+}
+
+.change_pass_ment {
+    color: black;
+    font-size: 1rem;
+    /* margin-top: 20px; */
 }
