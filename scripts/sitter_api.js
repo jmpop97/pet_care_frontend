@@ -1,8 +1,7 @@
 const frontend_base_url = "http://127.0.0.1:5500"
 const backend_base_url = "http://127.0.0.1:8000"
 
-
-async function postOwner() {
+async function postSitter() {
     const title = document.getElementById('title').value
     const content = document.getElementById('content').value
     const charge = document.getElementById('charge').value
@@ -24,7 +23,7 @@ async function postOwner() {
 
     let token = localStorage.getItem("access")
 
-    const response = await fetch(`${backend_base_url}/owner/`, {
+    const response = await fetch(`${backend_base_url}/sitter/`, {
         method: 'POST',
         headers: {
             'Authorization': `Bearer ${token}`
@@ -32,10 +31,16 @@ async function postOwner() {
         body: formdata
     })
     console.log(response)
+    if (response.status == 201) {
+        alert("글 작성 완료!")
+        window.location.replace(`${frontend_base_url}/pet_sitter_list.html`)
+    } else {
+        alert(response.statusText)
+    }
 }
 
-async function getOwners() {
-    const response = await fetch(`${backend_base_url}/owner/`)
+async function getSitters() {
+    const response = await fetch(`${backend_base_url}/sitter/`)
 
     if (response.status == 200) {
         const response_json = await response.json()
@@ -45,8 +50,8 @@ async function getOwners() {
     }
 }
 
-async function getOwner(ownerId) {
-    const response = await fetch(`${backend_base_url}/owner/${ownerId}/`)
+async function getSitter(sitterId) {
+    const response = await fetch(`${backend_base_url}/sitter/${sitterId}/`)
     if (response.status == 200) {
         const response_json = await response.json()
         return response_json
@@ -54,3 +59,34 @@ async function getOwner(ownerId) {
         alert("불러오는데 실패하였습니다.")
     }
 }
+
+async function getComments(sitterId) {
+    const response = await fetch(`${backend_base_url}/sitter/${sitterId}/comment/`)
+    if (response.status == 200) {
+        const response_json = await response.json()
+        return response_json
+    } else {
+        alert("불러오는데 실패하였습니다.")
+    }
+}
+
+async function postComment(newComment, sitterId) {
+    let token = localStorage.getItem("access")
+    const response = await fetch(`${backend_base_url}/sitter/${sitterId}/comment/`, {
+        method: 'POST',
+        headers: {
+            'content-type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify({
+            "content": newComment,
+        })
+    })
+    if (response.status == 200) {
+        const response_json = await response.json()
+        return response_json
+    } else {
+        alert(response.statusText)
+    }
+}
+
