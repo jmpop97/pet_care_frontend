@@ -1,0 +1,14 @@
+#post-container {
+    /* margin-top: 100px; */
+}
+
+#post-form {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.post_theme {
+    font-size: 3rem;
+}

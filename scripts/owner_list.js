@@ -51,6 +51,7 @@ window.onload = async function loadOwners() {
         }else if(owner.is_reserved == "완료"){
             newIsReserved.style.color = "green";
         }
+        newIsReserved.style.fontSize = "1.5rem"
         newIsReserved.innerText = owner.is_reserved
         newCardBody.appendChild(newIsReserved)
         // 게시글 제목
