@@ -10,6 +10,29 @@ async function submitComment() {
 
 }
 
+async function handleUpdate(list_number, comment_id) {
+    const comment = document.getElementById(`${list_number}th-comment`);
+    const commentBody = document.getElementById(`${list_number}th-body`);
+    commentBody.style.visibility = "hidden";
+    const updateInput = document.createElement("div");
+    updateInput.setAttribute("class", "input-group mb-3");
+    const updateContentInput = document.createElement("textarea");
+    updateContentInput.setAttribute("class", "form-control");
+    updateContentInput.value = document.getElementById(`${list_number}th-content`).innerHTML;
+    updateInput.appendChild(updateContentInput);
+    const updateButton = document.createElement("button");
+    updateButton.setAttribute("class", "btn btn-outline-secondary");
+    updateButton.setAttribute("type", "button");
+    updateButton.innerText = "수정하기";
+    updateInput.appendChild(updateButton);
+    comment.insertBefore(updateInput, commentBody);
+
+    updateButton.onclick = async () => {
+        const newComment = updateContentInput.value; // 수정된 값을 가져옴
+        await updateComment(newComment, comment_id); // 수정된 값을 인자로 updateComment 호출
+    };
+}
+
 async function loadComments(sitterId) {
     const response = await getComments(sitterId)
     console.log('코멘트로딩')
@@ -20,15 +43,21 @@ async function loadComments(sitterId) {
     comment_list.innerHTML = ''
     //댓글만들기
     response.forEach(comment => {
+        let list_number = comment_list.getElementsByTagName("li").length + 1
         comment_list.innerHTML += `
-        <li class="media my-4">
-            <div class="media-body">
+        <li class="media my-4" id="${list_number}th-comment">
+            <div class="media-body"  id="${list_number}th-body">
             <h5 class="mt-0 mb-1">${comment.writer}</h5>
-            <p class="margin-b">${comment.content}</p>
-            <p><small class="text-muted">${comment.created_at}</small></p>
+            <p class="margin-b" id="${list_number}th-content">${comment.content}</p>
+            <p class="margin-b"><small class="text-muted">${comment.created_at}</small></p>
+            <p><button class="text-muted btn" onclick="handleUpdate(${list_number},${comment.id})">수정</button>|<button class="text-muted btn" onclick="deleteComment(${comment.id})">삭제</button></p>
             </div>
         </li>`
     });
+}
+
+function sitter_update(sitterId) {
+    window.location.href = `${frontend_base_url}/pet_sitter_post.html?sitter_id=${sitterId}`
 }
 
 async function loadSitter(sitterId) {
@@ -37,6 +66,25 @@ async function loadSitter(sitterId) {
     // 글 제목
     const sitterTitle = document.getElementById("sitter-title")
     sitterTitle.innerText = response.title
+
+    // 만약 글 작성자와 동일하다면 수정/삭제 버튼 내보내기
+    // const payload = localStorage.getItem("payload")
+    // const payload_parse = JSON.parse(payload)
+    // console.log(payload_parse.user_id)
+    const updateButton = document.createElement("button")
+    updateButton.setAttribute("class", "btn btn-dark")
+    updateButton.setAttribute("type", "button")
+    updateButton.setAttribute("onclick", `sitter_update(${sitterId})`)
+    updateButton.innerHTML = "수정하기"
+    const buttons = document.getElementById("buttons")
+    buttons.appendChild(updateButton)
+    // 삭제하기
+    const deleteButton = document.createElement("button")
+    deleteButton.setAttribute("class", "btn btn-dark")
+    deleteButton.setAttribute("type", "button")
+    deleteButton.setAttribute("onclick", `deleteSitter(${sitterId})`)
+    deleteButton.innerHTML = "삭제하기"
+    buttons.appendChild(deleteButton)
     // 글 작성자
     const sitterWriter = document.getElementById("sitter-writer")
     sitterWriter.innerText = response.writer
