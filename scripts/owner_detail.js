@@ -114,6 +114,82 @@ async function loadOwner(ownerId) {
             buttons.appendChild(deleteButton)
         }
     }
+    // 예약 관리
+    if (payload_parse) {
+        // 예약 목록 버튼
+        if (payload_parse.username == response.writer) {
+            const reservedList = document.createElement("button")
+            reservedList.setAttribute("class", "btn btn-dark mx-2 my-2")
+            reservedList.setAttribute("type", "button")
+            reservedList.setAttribute("data-bs-toggle", "modal")
+            reservedList.setAttribute("data-bs-target", "#reserved-sitter")
+            reservedList.innerHTML = "예약 확인하기"
+            reservedList.style.float = "right"
+            const buttons = document.getElementById("buttons")
+            buttons.appendChild(reservedList)
+
+            // 예약 목록 띄우기
+            const response = await getreservedOwner(ownerId)
+            const sitterList = document.getElementById("sitter-list")
+            console.log(response)
+            // 로드할때 리셋
+            sitterList.innerHTML = ''
+            response.forEach(sitter => {
+                let list_number = sitterList.getElementsByTagName("li").length + 1
+                if (sitter.is_selected) {
+                    sitterList.innerHTML += `
+                <li class="media my-4" id="${list_number}th-sitter">
+                    <div class="row" >
+                    <p class="margin-b col">${sitter.sitter.username}</p>
+                    <button type="button" class="btn btn-secondary col" style="width: 50%;" onclick="SitterIsSelected(${ownerId},${sitter.sitter.id})")>취소</button>
+                    </div>
+                </li>`
+                } else {
+                    sitterList.innerHTML += `
+                <li class="media my-4" id="${list_number}th-sitter">
+                    <div class="row" >
+                    <p class="margin-b col">${sitter.sitter.username}</p>
+                    <button type="button" class="btn btn-outline-secondary col" style="width: 50%;" onclick="SitterIsSelected(${ownerId},${sitter.sitter.id})">매칭</button>
+                    </div>
+                </li>`}
+
+            });
+        } else {
+            // 예약버튼
+            // const reservedList = await getreservedOwner(ownerId)
+            // if (payload_parse.username in reservedList.sitter) {
+            //     // 신청 후
+            //     const reservedButton = document.createElement("button")
+            //     reservedButton.setAttribute("class", "btn btn-dark mx-2 my-2")
+            //     reservedButton.setAttribute("type", "button")
+            //     reservedButton.setAttribute("onclick", `reservedOwner(${ownerId})`)
+            //     reservedButton.innerHTML = "신청취소"
+            //     reservedButton.style.float = "right"
+            //     const buttons = document.getElementById("buttons")
+            //     buttons.appendChild(reservedButton)
+            // } else {
+            //     // 신청 전
+            //     const reservedButton = document.createElement("button")
+            //     reservedButton.setAttribute("class", "btn btn-dark mx-2 my-2")
+            //     reservedButton.setAttribute("type", "button")
+            //     reservedButton.setAttribute("onclick", `reservedOwner(${ownerId})`)
+            //     reservedButton.innerHTML = "신청하기"
+            //     reservedButton.style.float = "right"
+            //     const buttons = document.getElementById("buttons")
+            //     buttons.appendChild(reservedButton)
+            // }
+            const reservedButton = document.createElement("button")
+            reservedButton.setAttribute("class", "btn btn-dark mx-2 my-2")
+            reservedButton.setAttribute("type", "button")
+            reservedButton.setAttribute("onclick", `reservedOwner(${ownerId})`)
+            reservedButton.innerHTML = "신청하기"
+            reservedButton.style.float = "right"
+            const buttons = document.getElementById("buttons")
+            buttons.appendChild(reservedButton)
+
+        }
+    }
+
     // 글 작성자
     const ownerWriter = document.getElementById("owner-writer")
     ownerWriter.innerText = response.writer
