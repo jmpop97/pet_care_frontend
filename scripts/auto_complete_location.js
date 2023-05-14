@@ -1,6 +1,6 @@
-const ul = document.querySelector(".pop_rel_keywords");
-const searchInput = document.querySelector(".search_input");
-const relContainer = document.querySelector(".rel_search");
+const searchInput = document.querySelector("#location");
+const relContainer = document.querySelector("#location_container");
+const ul = document.querySelector("#location_ul");
 let cache = "";
 
 const checkInput = () => {
@@ -12,12 +12,12 @@ const timer = (beforeInput) => {
   setTimeout(() => {
 
     if(searchInput.value === beforeInput) {
-      console.log("입력멈춤");
+      console.log("L입력멈춤");
       loadData(searchInput.value);		// 0.5초 내에 입력창이 변했다면 데이터 로드
       checkInput();
       
     } else {
-      console.log("입력변함");
+      console.log("L입력변함");
       checkInput();
     }
    
@@ -31,7 +31,7 @@ const timer = (beforeInput) => {
 
 const loadData = (input) => {
   const [city, state = ""] = input.split(" "); // 입력된 값을 공백을 기준으로 분리하여 city와 state 변수에 할당하되, state는 기본값 ""으로 설정
-  const url = `http://127.0.0.1:8000/owner/location?city=${city}&state=${state}`; // 새로운 URL 생성
+  const url = `${backend_base_url}/owner/location?city=${city}&state=${state}`; // 새로운 URL 생성
   if(cache === url) return;
   else {
       cache = url;
