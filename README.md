@@ -23,3 +23,4 @@ https://www.figma.com/file/qBrLy5BJyRnKLNZ32xrj5O/Pet_care?type=design&node-id=0
 15. usernaem(ID)로 뜨는 것들 nickname으로 다 바꾸는게 좋을 것 같긴한데 엄청 번거로울 예정
 16. 글 작성폼 설명달기✅
 17. base_url 뺴서 하나의 파일로✅
+18. 예약 신청 후에 신청이 되었으면 신청버튼을 취소하기 버튼으로 바꾸고 싶은데 방법이 안 떠올라요ㅠㅠㅠ
