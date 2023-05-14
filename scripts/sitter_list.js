@@ -37,28 +37,38 @@ window.onload = async function loadSitters() {
         newTxt.setAttribute("class", "col-md-8")
         newRow.appendChild(newTxt)
         const newCardBody = document.createElement("div")
-        newCardBody.setAttribute("class", "card-body")
+        newCardBody.setAttribute("class", "card-body p-5")
         newTxt.appendChild(newCardBody)
 
         // 내용 부분
         // 구인 상태
         const newIsReserved = document.createElement("p")
         newIsReserved.setAttribute("class", "card-text")
-        if(sitter.is_reserved == "미완료"){
+        if (sitter.is_reserved == "미완료") {
             newIsReserved.style.color = "red";
-        }else if(sitter.is_reserved == "예약중"){
+        } else if (sitter.is_reserved == "예약중") {
             newIsReserved.style.color = "#ff8040";
-        }else if(sitter.is_reserved == "완료"){
+        } else if (sitter.is_reserved == "완료") {
             newIsReserved.style.color = "green";
         }
         newIsReserved.style.fontSize = "1.5rem"
         newIsReserved.innerText = sitter.is_reserved
         newCardBody.appendChild(newIsReserved)
+        // 제목+작성자
+        const newHead = document.createElement("div")
+        newHead.setAttribute("class", "row")
+        newCardBody.appendChild(newHead)
+
         // 게시글 제목
         const newTitle = document.createElement("h5")
-        newTitle.setAttribute("class", "card-title")
+        newTitle.setAttribute("class", "card-title col")
         newTitle.innerText = sitter.title
         newCardBody.appendChild(newTitle)
+        //게시글 작성자
+        const newWriter = document.createElement("p")
+        newWriter.setAttribute("class", "card-text col text-end")
+        newWriter.innerText = sitter.writer
+        newHead.appendChild(newWriter)
         // 게시글 내용
         const newContent = document.createElement("p")
         newContent.setAttribute("class", "card-text margin-b")

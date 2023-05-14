@@ -1,44 +1,61 @@
 <!DOCTYPE html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>펫 케어</title>
-    <link href="styles/style.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-  </head>
-  <body>
-    <header></header>
-    <div class="profile_wrap">
-      <h1>마이페이지</h1>
-      <div class="profile_flex">
-        <div>
-          <h2>ID</h2><br>
-          <h3>닉네임</h3><br>
-          <h3>email</h3><br>
-          <h3>온도</h3><br>
-          <button class="btn btn-dark" type="button" onclick="location.href='/profile_edit.html'">프로필 수정</button>
-        </div>
-        <div class="profile_real">
-          <div id="profileusername"></div><br>
-          <div id="profilenick_name"></div><br>
-          <div id="profileemail"></div><br>
-          <div id="fever"></div><br>
-        </div>
-      </div>
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>펫 케어</title>
+  <link href="styles/style.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+</head>
+
+<body>
+  <header></header>
+  <div class="profile_wrap">
+    <h1>마이페이지</h1>
+    <div class="profile_flex">
       <div>
-        <!-- <h3>내가 작성한 글 ></h3>
+        <h2>ID</h2><br>
+        <h3>닉네임</h3><br>
+        <h3>email</h3><br>
+        <h3>온도</h3><br>
+        <button class="btn btn-dark" type="button" onclick="location.href='/profile_edit.html'">프로필 수정</button>
+      </div>
+      <div class="profile_real">
+        <div id="profileusername"></div><br>
+        <div id="profilenick_name"></div><br>
+        <div id="profileemail"></div><br>
+        <div id="fever"></div><br>
+      </div>
+    </div>
+    <div>
+      <!-- <h3>내가 작성한 글 ></h3>
         <hr>
         <h3>내가 작성한 댓글 ></h3>
         <hr>
         <h3>내가 작성한 리뷰 ></h3> -->
-        <hr>
-        <h3>나에게 달린 리뷰 ></h3>
+      <hr>
+      <h3>나에게 달린 리뷰 ></h3>
+      <div class="container mt-5">
+        <h4>펫오너 리뷰⭐️</h4>
+        <ul class="list-unstyled" id="owner_reviews">
+        </ul>
+      </div>
+      <div class="container mt-5">
+        <h4>펫시터 리뷰⭐️</h4>
+        <ul class="list-unstyled" id="sitter_reviews">
+        </ul>
       </div>
     </div>
-    <script src="scripts/header.js"></script>
-    <script src="/scripts/profile.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-  </body>
+  </div>
+
+  <script src="scripts/header.js"></script>
+  <script src="/scripts/profile.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+    crossorigin="anonymous"></script>
+</body>
+
 </html>
