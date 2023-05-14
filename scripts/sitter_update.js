@@ -33,7 +33,7 @@ window.onload = async function () {
         const createButton = document.createElement("button")
         createButton.setAttribute("class", "btn btn-dark")
         createButton.setAttribute("type", "button")
-        createButton.setAttribute("onclick", "postOwner()")
+        createButton.setAttribute("onclick", "postSitter()")
         createButton.innerHTML = "작성하기"
         createButton.style.width = "100px"
         const buttons = document.getElementById("post-form")
