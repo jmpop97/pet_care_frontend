@@ -17,19 +17,35 @@
   <div class="container mt-4" id="post-container">
     <p class="post_theme">펫시터 구해요🐾</p>
     <form id="post-form">
+      제목
       <input type="text" class="form-control mb-4" id="title" style="width: 100%;" placeholder="제목을 입력해 주세요.">
+      내용
       <textarea class="form-control mb-4" placeholder="내용을 입력해 주세요." id="content"
         style="height: 100px; width: 100%;"></textarea>
+      요금
       <input type="number" class="form-control mb-4" id="charge" min="0" placeholder="요금을 입력해 주세요." style="width: 100%;">
+      지역
       <input type="text" class="form-control mb-4" id="location" placeholder="시/도 - 시/군/구">
+      품종
       <input type="text" class="form-control mb-4" id="species" placeholder="반려동물 종">
+      첨부사진
       <input class="form-control form-control-sm mb-4" id="photo" type="file">
-      <input type="datetime-local" class="form-control mb-4" id="reservation_start" placeholder="예약시작일">
-      <input type="datetime-local" class="form-control mb-4" id="reservation_end" placeholder="예약종료일">
+      예약시작일
+      <input type="datetime-local" class="form-control mb-4" id="reservation_start" placeholder="예약시작일을 입력해주세요.">
+      예약 종료일
+      <input type="datetime-local" class="form-control mb-4" id="reservation_end" placeholder="예약종료일을 입력해주세요.">
       <!-- <button type="button" onclick="postOwner()">작성하기</button>
       <button type="button" onclick="updateOwner()">수정하기</button> -->
+            
+      <input class= "search_input">
+      <container class = "rel_search">
+          <ul class="pop_rel_keywords">
+          </ul>
+      </container>
+      
     </form>
   </div>
+  <script src="/scripts/autocomplete.js"></script>
   <script src="/scripts/owner_api.js"></script>
   <script src="/scripts/owner_update.js"></script>
   <script src="scripts/header.js"></script>
