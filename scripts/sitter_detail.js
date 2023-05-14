@@ -56,6 +56,29 @@ async function loadComments(sitterId) {
     });
 }
 
+async function loadReviews(sitterId) {
+    const response = await getSitter(sitterId)
+    console.log(response.sitterreviews)
+
+    const review_list = document.getElementById("sitter_reviews")
+    let reviews = response.sitterreviews
+
+    //리뷰만들기
+    reviews.forEach(review => {
+        let list_number = review_list.getElementsByTagName("li").length + 1
+        let star = review.star
+        let star_repeat = '⭐'.repeat(star)
+        review_list.innerHTML += `
+        <li class="media my-4" id="${list_number}th-review">
+            <div class="media-body" >
+            <h5 class="mt-0 mb-1">${review.writer} | ${star_repeat}</h5>
+            <p class="margin-b">${review.content}</p>
+            <p class="margin-b"><small class="text-muted">${review.created_at}</small></p>
+            </div>
+        </li>`
+    });
+}
+
 function sitter_update(sitterId) {
     window.location.href = `${frontend_base_url}/pet_sitter_post.html?sitter_id=${sitterId}`
 }
@@ -91,11 +114,11 @@ async function loadSitter(sitterId) {
     // 예약상태
     const sitterIsReserved = document.getElementById("sitter-isreserved")
     sitterIsReserved.innerText = response.is_reserved
-    if(response.is_reserved == "미완료"){
+    if (response.is_reserved == "미완료") {
         sitterIsReserved.style.color = "red";
-    }else if(response.is_reserved == "예약중"){
+    } else if (response.is_reserved == "예약중") {
         sitterIsReserved.style.color = "#ff8040";
-    }else if(response.is_reserved == "완료"){
+    } else if (response.is_reserved == "완료") {
         sitterIsReserved.style.color = "green";
     }
     // 예약날짜
@@ -128,5 +151,6 @@ window.onload = async function () {
     sitterId = urlParams.get('sitter_id');
 
     await loadSitter(sitterId);
+    await loadReviews(sitterId);
     await loadComments(sitterId);
 }

@@ -47,11 +47,34 @@ async function loadComments(ownerID) {
         let list_number = comment_list.getElementsByTagName("li").length + 1
         comment_list.innerHTML += `
         <li class="media my-4" id="${list_number}th-comment">
-            <div class="media-body"  id="${list_number}th-body">
+            <div class="media-body" >
             <h5 class="mt-0 mb-1">${comment.writer}</h5>
-            <p class="margin-b" id="${list_number}th-content">${comment.content}</p>
+            <p class="margin-b">${comment.content}</p>
             <p class="margin-b"><small class="text-muted">${comment.created_at}</small></p>
             <p><button class="text-muted btn" onclick="handleUpdate(${list_number},${comment.id})">수정</button>|<button class="text-muted btn" onclick="deleteComment(${comment.id})">삭제</button></p>
+            </div>
+        </li>`
+    });
+}
+
+async function loadReviews(ownerID) {
+    const response = await getOwner(ownerID)
+    console.log(response.ownerreviews)
+
+    const review_list = document.getElementById("owner_reviews")
+    let reviews = response.ownerreviews
+
+    //리뷰만들기
+    reviews.forEach(review => {
+        let list_number = review_list.getElementsByTagName("li").length + 1
+        let star = review.star
+        let star_repeat = '⭐'.repeat(star)
+        review_list.innerHTML += `
+        <li class="media my-4" id="${list_number}th-review">
+            <div class="media-body" >
+            <h5 class="mt-0 mb-1">${review.writer} | ${star_repeat}</h5>
+            <p class="margin-b">${review.content}</p>
+            <p class="margin-b"><small class="text-muted">${review.created_at}</small></p>
             </div>
         </li>`
     });
@@ -95,11 +118,11 @@ async function loadOwner(ownerId) {
     // 예약상태
     const ownerIsReserved = document.getElementById("owner-isreserved")
     ownerIsReserved.innerText = response.is_reserved
-    if(response.is_reserved == "미완료"){
+    if (response.is_reserved == "미완료") {
         ownerIsReserved.style.color = "red";
-    }else if(response.is_reserved == "예약중"){
+    } else if (response.is_reserved == "예약중") {
         ownerIsReserved.style.color = "#ff8040";
-    }else if(response.is_reserved == "완료"){
+    } else if (response.is_reserved == "완료") {
         ownerIsReserved.style.color = "green";
     }
     // 예약날짜
@@ -132,6 +155,7 @@ window.onload = async function () {
     ownerId = urlParams.get('owner_id');
 
     await loadOwner(ownerId);
+    await loadReviews(ownerId);
     await loadComments(ownerId);
 
 
