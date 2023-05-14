@@ -51,7 +51,7 @@ window.onload = async function loadSitters() {
         } else if (sitter.is_reserved == "완료") {
             newIsReserved.style.color = "green";
         }
-        newIsReserved.style.fontSize = "1.5rem"
+        newIsReserved.style.fontSize = "15px"
         newIsReserved.innerText = sitter.is_reserved
         newCardBody.appendChild(newIsReserved)
         // 제목+작성자
@@ -60,10 +60,10 @@ window.onload = async function loadSitters() {
         newCardBody.appendChild(newHead)
 
         // 게시글 제목
-        const newTitle = document.createElement("h5")
+        const newTitle = document.createElement("h4")
         newTitle.setAttribute("class", "card-title col")
         newTitle.innerText = sitter.title
-        newCardBody.appendChild(newTitle)
+        newHead.appendChild(newTitle)
         //게시글 작성자
         const newWriter = document.createElement("p")
         newWriter.setAttribute("class", "card-text col text-end")
@@ -73,6 +73,7 @@ window.onload = async function loadSitters() {
         const newContent = document.createElement("p")
         newContent.setAttribute("class", "card-text margin-b")
         newContent.setAttribute("id", "content")
+        newContent.style.fontSize = "17px"
         newContent.innerText = sitter.content
         newCardBody.appendChild(newContent)
         // 예약 날짜

@@ -51,7 +51,7 @@ window.onload = async function loadOwners() {
         } else if (owner.is_reserved == "완료") {
             newIsReserved.style.color = "green";
         }
-        newIsReserved.style.fontSize = "1.5rem"
+        newIsReserved.style.fontSize = "15px"
         newIsReserved.innerText = owner.is_reserved
         newCardBody.appendChild(newIsReserved)
         // 제목+작성자
@@ -59,7 +59,7 @@ window.onload = async function loadOwners() {
         newHead.setAttribute("class", "row")
         newCardBody.appendChild(newHead)
         // 게시글 제목
-        const newTitle = document.createElement("h5")
+        const newTitle = document.createElement("h4")
         newTitle.setAttribute("class", "card-title col")
         newTitle.innerText = owner.title
         newHead.appendChild(newTitle)
@@ -72,6 +72,7 @@ window.onload = async function loadOwners() {
         const newContent = document.createElement("p")
         newContent.setAttribute("class", "card-text margin-b")
         newContent.setAttribute("id", "content")
+        newContent.style.fontSize = "17px"
         newContent.innerText = owner.content
         newCardBody.appendChild(newContent)
         // 예약 날짜
