@@ -72,7 +72,7 @@ async function loadSitter(sitterId) {
     // const payload_parse = JSON.parse(payload)
     // console.log(payload_parse.user_id)
     const updateButton = document.createElement("button")
-    updateButton.setAttribute("class", "btn btn-dark")
+    updateButton.setAttribute("class", "btn btn-dark mx-2 my-2")
     updateButton.setAttribute("type", "button")
     updateButton.setAttribute("onclick", `sitter_update(${sitterId})`)
     updateButton.innerHTML = "수정하기"
@@ -80,7 +80,7 @@ async function loadSitter(sitterId) {
     buttons.appendChild(updateButton)
     // 삭제하기
     const deleteButton = document.createElement("button")
-    deleteButton.setAttribute("class", "btn btn-dark")
+    deleteButton.setAttribute("class", "btn btn-dark mx-2 my-2")
     deleteButton.setAttribute("type", "button")
     deleteButton.setAttribute("onclick", `deleteSitter(${sitterId})`)
     deleteButton.innerHTML = "삭제하기"
