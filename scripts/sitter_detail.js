@@ -91,26 +91,25 @@ async function loadSitter(sitterId) {
     sitterTitle.innerText = response.title
 
     // 만약 글 작성자와 동일하다면 수정/삭제 버튼 내보내기
-    const payload = localStorage.getItem("payload")
-    const payload_parse = JSON.parse(payload)
-    if (payload_parse) {
-        if (payload_parse.username == response.writer) {
-            const updateButton = document.createElement("button")
-            updateButton.setAttribute("class", "btn btn-dark mx-2 my-2")
-            updateButton.setAttribute("type", "button")
-            updateButton.setAttribute("onclick", `sitter_update(${sitterId})`)
-            updateButton.innerHTML = "수정하기"
-            const buttons = document.getElementById("buttons")
-            buttons.appendChild(updateButton)
-            // 삭제하기
-            const deleteButton = document.createElement("button")
-            deleteButton.setAttribute("class", "btn btn-dark mx-2 my-2")
-            deleteButton.setAttribute("type", "button")
-            deleteButton.setAttribute("onclick", `deleteSitter(${sitterId})`)
-            deleteButton.innerHTML = "삭제하기"
-            buttons.appendChild(deleteButton)
-        }
-    }
+    // const payload = localStorage.getItem("payload")
+    // const payload_parse = JSON.parse(payload)
+    // console.log(payload_parse.user_id)
+    const updateButton = document.createElement("button")
+    updateButton.setAttribute("class", "btn btn-dark mx-2 my-2")
+    updateButton.setAttribute("type", "button")
+    updateButton.setAttribute("onclick", `sitter_update(${sitterId})`)
+    updateButton.innerHTML = "수정하기"
+    updateButton.style.float = "right"
+    const buttons = document.getElementById("buttons")
+    buttons.appendChild(updateButton)
+    // 삭제하기
+    const deleteButton = document.createElement("button")
+    deleteButton.setAttribute("class", "btn btn-dark mx-2 my-2")
+    deleteButton.setAttribute("type", "button")
+    deleteButton.setAttribute("onclick", `deleteSitter(${sitterId})`)
+    deleteButton.innerHTML = "삭제하기"
+    deleteButton.style.float = "right"
+    buttons.appendChild(deleteButton)
     // 글 작성자
     const sitterWriter = document.getElementById("sitter-writer")
     sitterWriter.innerText = response.writer

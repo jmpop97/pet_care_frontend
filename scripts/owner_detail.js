@@ -101,6 +101,7 @@ async function loadOwner(ownerId) {
             updateButton.setAttribute("type", "button")
             updateButton.setAttribute("onclick", `owner_update(${ownerId})`)
             updateButton.innerHTML = "수정하기"
+            updateButton.style.float = "right"
             const buttons = document.getElementById("buttons")
             buttons.appendChild(updateButton)
             // 삭제하기
@@ -109,6 +110,7 @@ async function loadOwner(ownerId) {
             deleteButton.setAttribute("type", "button")
             deleteButton.setAttribute("onclick", `deleteOwner(${ownerId})`)
             deleteButton.innerHTML = "삭제하기"
+            deleteButton.style.float = "right"
             buttons.appendChild(deleteButton)
         }
     }
