@@ -12,12 +12,12 @@ const timer = (beforeInput) => {
   setTimeout(() => {
 
     if(searchInput.value === beforeInput) {
-      console.log("L입력멈춤");
+      console.log("입력멈춤");
       loadData(searchInput.value);		// 0.5초 내에 입력창이 변했다면 데이터 로드
       checkInput();
       
     } else {
-      console.log("L입력변함");
+      console.log("입력변함");
       checkInput();
     }
    

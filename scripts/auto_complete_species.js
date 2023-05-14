@@ -12,12 +12,12 @@ const speciesTimer = (speciesBeforeInput) => {
   setTimeout(() => {
 
     if(speciesSearchInput.value === speciesBeforeInput) {
-      console.log("S입력멈춤");
+      // console.log("입력멈춤");
       speciesLoadData(speciesSearchInput.value);		// 0.5초 내에 입력창이 변했다면 데이터 로드
       speciesCheckInput();
       
     } else {
-      console.log("S입력변함");
+      // console.log("입력변함");
       speciesCheckInput();
     }
    
@@ -30,26 +30,25 @@ const speciesTimer = (speciesBeforeInput) => {
 }
 
 const speciesLoadData = (input) => {
-  const [breeds, species = ""] = input.split(" "); // 입력된 값을 공백을 기준으로 분리하여 city와 breeds 변수에 할당하되, breeds는 기본값 ""으로 설정
+  const [species, breeds = ""] = input.split(" "); // 입력된 값을 공백을 기준으로 분리하여 species와 breeds 변수에 할당하되, breeds는 기본값 ""으로 설정
   const speciesUrl = `${backend_base_url}/owner/species?species=${species}&breeds=${breeds}`; // 새로운 URL 생성
-  if(speciesCache === speciesUrl) return;
-  else {
-      speciesCache = speciesUrl;
-      fetch(speciesUrl)
-          .then((speciesRes) => speciesRes.json())
-          .then((speciesRes) => {
-              console.log(speciesRes); // 전달된 데이터 출력
-              speciesFillSearch(speciesRes);
-          })
-          .catch((err) => {
-              console.error(err);
-              // 에러 발생 시, 캐시를 초기화하여 다음 요청 시 다시 데이터를 가져올 수 있도록 함
-              cache = '';
-              li.innerHTML = "서버에서 데이터를 가져오는 중 오류가 발생했습니다.";
-              ul.appendChild(li);
-          });
-  }
-}
+
+  if (speciesCache === speciesUrl) return;
+  speciesCache = speciesUrl;
+
+  fetch(speciesUrl)
+    .then((speciesRes) => speciesRes.json())
+    .then((speciesRes) => {
+      console.log(speciesRes);
+      speciesFillSearch(speciesRes);
+    })
+    .catch((err) => {
+      console.error(err);
+      cache = '';
+      li.innerHTML = "서버에서 데이터를 가져오는 중 오류가 발생했습니다.";
+      ul.appendChild(li);
+    });
+};
 
 const speciesFillSearch = (suggestArr) => {
   speciesUl.innerHTML = "";
@@ -73,8 +72,8 @@ const speciesFillSearch = (suggestArr) => {
 };
 
 const speciesInputIsSameAsSuggestion = (species, breeds) => {
-  const [inputSpecies, inputbreeds = ""] = speciesSearchInput.value.split(" ");
-  return species === inputSpecies && breeds === inputbreeds;
+  const [inputSpecies, inputBreeds = ""] = speciesSearchInput.value.split(" ");
+  return species === inputSpecies && breeds === inputBreeds;
 };
 
 const setSpeciesSearchInputValue = (species, breeds) => {
