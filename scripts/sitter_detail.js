@@ -99,6 +99,7 @@ async function loadSitter(sitterId) {
     updateButton.setAttribute("type", "button")
     updateButton.setAttribute("onclick", `sitter_update(${sitterId})`)
     updateButton.innerHTML = "수정하기"
+    updateButton.style.float = "right"
     const buttons = document.getElementById("buttons")
     buttons.appendChild(updateButton)
     // 삭제하기
@@ -107,6 +108,7 @@ async function loadSitter(sitterId) {
     deleteButton.setAttribute("type", "button")
     deleteButton.setAttribute("onclick", `deleteSitter(${sitterId})`)
     deleteButton.innerHTML = "삭제하기"
+    deleteButton.style.float = "right"
     buttons.appendChild(deleteButton)
     // 글 작성자
     const sitterWriter = document.getElementById("sitter-writer")

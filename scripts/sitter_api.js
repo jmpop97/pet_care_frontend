@@ -1,7 +1,3 @@
-const frontend_base_url = "http://127.0.0.1:5500"
-const backend_base_url = "http://127.0.0.1:8000"
-
-
 function checkSigninPost() {
     const payload = localStorage.getItem("payload");
     const postButton = document.getElementById("sitter_post_login_check")
