@@ -1,6 +1,6 @@
 // includeHTML파일 대신 fetch로 뿌려주기 (컴포넌트화, 프로젝트 아키텍쳐)
 async function injectNavbar() {
-    fetch("./header.html").then(response=>{
+    fetch("./header.html").then(response => {
         return response.text()
     })
         .then(data => {
@@ -12,10 +12,10 @@ async function injectNavbar() {
 
 
     const payload = localStorage.getItem("payload");
-    if(payload){
+    if (payload) {
         const payload_parse = JSON.parse(payload)
-        console.log(payload_parse.username)
-        
+
+
         const intro = document.getElementById("intro")
         intro.innerText = `${payload_parse.username}님`
 

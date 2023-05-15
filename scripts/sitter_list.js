@@ -41,19 +41,6 @@ window.onload = async function loadSitters() {
         newTxt.appendChild(newCardBody)
 
         // 내용 부분
-        // 구인 상태
-        const newIsReserved = document.createElement("p")
-        newIsReserved.setAttribute("class", "card-text")
-        if (sitter.is_reserved == "미완료") {
-            newIsReserved.style.color = "red";
-        } else if (sitter.is_reserved == "예약중") {
-            newIsReserved.style.color = "#ff8040";
-        } else if (sitter.is_reserved == "완료") {
-            newIsReserved.style.color = "green";
-        }
-        newIsReserved.style.fontSize = "15px"
-        newIsReserved.innerText = sitter.is_reserved
-        newCardBody.appendChild(newIsReserved)
         // 제목+작성자
         const newHead = document.createElement("div")
         newHead.setAttribute("class", "row")
@@ -76,14 +63,6 @@ window.onload = async function loadSitters() {
         newContent.style.fontSize = "17px"
         newContent.innerText = sitter.content
         newCardBody.appendChild(newContent)
-        // 예약 날짜
-        const newDateTime = document.createElement("p")
-        newDateTime.setAttribute("class", "card-text text-start margin-b")
-        newCardBody.appendChild(newDateTime)
-        const newReserved = document.createElement("small")
-        newReserved.setAttribute("class", "text-muted")
-        newReserved.innerText = sitter.reservation_start + ' - ' + sitter.reservation_end
-        newDateTime.appendChild(newReserved)
         // 위치
         const newLocation = document.createElement("p")
         newLocation.setAttribute("class", "card-text text-start margin-b")

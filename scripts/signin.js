@@ -2,7 +2,7 @@
 // api.js가 맨위에서 실행되어야 오류없이 실행됨
 function checkSignin() {
     const payload = localStorage.getItem("payload");
-    if(payload){
+    if (payload) {
         window.location.replace(`${frontend_base_url}`)
     }
 }
@@ -13,16 +13,16 @@ checkSignin()
 async function handleSignin() {
     const username = document.getElementById("username").value
     const password = document.getElementById("password").value
-    console.log(username, password)
 
-    const response = await fetch(`${backend_base_url}/user/api/token/`,{
-        headers:{
-            'content-type':'application/json',
+
+    const response = await fetch(`${backend_base_url}/user/api/token/`, {
+        headers: {
+            'content-type': 'application/json',
         },
-        method:'POST',
+        method: 'POST',
         body: JSON.stringify({
-            "username":username,
-            "password":password
+            "username": username,
+            "password": password
         })
     })
     console.log(response)
@@ -35,23 +35,23 @@ async function handleSigninButton() {
     const response = await handleSignin();
 
 
-    if(response.status == 200){
+    if (response.status == 200) {
         const response_json = await response.json()
 
         console.log(response_json)
         localStorage.setItem("access", response_json.access);
         localStorage.setItem("refresh", response_json.refresh);
-    
+
         const base64Url = response_json.access.split('.')[1];
         const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-        const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+        const jsonPayload = decodeURIComponent(atob(base64).split('').map(function (c) {
             return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
         }).join(''));
-        
+
         localStorage.setItem("payload", jsonPayload);
         alert("환영합니다.")
         window.location.replace(`${frontend_base_url}/`)
-    }else{
+    } else {
         alert("회원정보가 일치하지 않습니다.")
     }
 }

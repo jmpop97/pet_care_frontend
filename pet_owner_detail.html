@@ -16,18 +16,37 @@
   <header></header>
   <div class="container mt-4" id="post-container">
     <p class="post_theme">펫시터 구해요🐾</p>
-    <div id="owner_detail" class="text-center">
-      <h3 id="owner-title" class="mb-5">게시글 제목</h3>
+    <div id="owner_detail">
+      <h3 id="owner-title" class="mb-5 text-center">게시글 제목</h3>
       <div class="row row-cols-1 row-cols-md-2" id="owner">
         <div id="owner-img" class="col"></div>
-        <div class="col ">
-          <p id="owner-writer">작성자</p>
-          <p id="owner-isreserved">예약상태</p>
-          <p id="owner-datetime">예약날짜</p>
-          <p id="owner-location">지역</p>
-          <p id="owner-species">반려동물 종</p>
-          <p id="owner-price">요금</p>
-          <p id="owner-content">content</p>
+        <div class="col">
+          <div class="row">
+            <div class="col">
+              <p class="margin-b"><small class="text-black-50">작성자</small></p>
+              <p class="fs-5" id="owner-writer">작성자</p>
+            </div>
+            <div class="col">
+              <p class="margin-b"><small class="text-black-50">예약상태</small></p>
+              <p class="fs-5" id="owner-isreserved">예약상태</p>
+            </div>
+          </div>
+          <p class="margin-b"><small class="text-black-50">예약날짜</small></p>
+          <p class="fs-5" id="owner-datetime">예약날짜</p>
+          <div class="row">
+            <div class="col">
+              <p class="margin-b"><small class="text-black-50">지역</small></p>
+              <p class="fs-5" id="owner-location">지역</p>
+            </div>
+            <div class="col">
+              <p class="margin-b"><small class="text-black-50">품종</small></p>
+              <p class="fs-5" id="owner-species">반려동물 종</p>
+            </div>
+          </div>
+          <p class="margin-b"><small class="text-black-50">요금</small></p>
+          <p class="fs-5" id="owner-price">요금</p>
+          <p class="margin-b"><small class="text-black-50">내용</small></p>
+          <p class="fs-5" id="owner-content">content</p>
           <div id="buttons"></div>
         </div>
 
@@ -54,12 +73,12 @@
     </div>
   </div>
   <div class="container mt-5">
-    <h3>리뷰⭐️</h3>
+    <h3 id="reviews">리뷰⭐️</h3>
     <ul class="list-unstyled" id="owner_reviews">
     </ul>
   </div>
   <div class="container mt-5">
-    <h3>댓글💬</h3>
+    <h3 id="comments">댓글💬</h3>
     <ul class="list-unstyled" id="owner_comments">
     </ul>
   </div>
