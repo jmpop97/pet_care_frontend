@@ -36,7 +36,7 @@ async function handleUpdate(list_number, comment_id) {
 
 async function loadComments(ownerID) {
     const response = await getComments(ownerID)
-    console.log(response)
+
 
     const comment_list = document.getElementById("owner_comments")
     // 로드할때 리셋
@@ -59,7 +59,7 @@ async function loadComments(ownerID) {
 
 async function loadReviews(ownerID) {
     const response = await getOwner(ownerID)
-    console.log(response.ownerreviews)
+
 
     const review_list = document.getElementById("owner_reviews")
     let reviews = response.ownerreviews
@@ -86,7 +86,12 @@ function owner_update(owner_id) {
 
 async function loadOwner(ownerId) {
     const response = await getOwner(ownerId);
-    console.log(response)
+    //리뷰, 댓글 개수 표시
+    const reviewCount = document.getElementById(id = "reviews")
+    reviewCount.innerHTML = `리뷰⭐️ <small class="text-muted fs-6">(${response.reviews_count})</small>`
+    const commentCount = document.getElementById(id = "comments")
+    commentCount.innerHTML = `댓글💬 <small class="text-muted fs-6">(${response.comments_count})</small>`
+
     // 글 제목
     const ownerTitle = document.getElementById("owner-title")
     ownerTitle.innerText = response.title
@@ -131,7 +136,7 @@ async function loadOwner(ownerId) {
             // 예약 목록 띄우기
             const response = await getreservedOwner(ownerId)
             const sitterList = document.getElementById("sitter-list")
-            console.log(response)
+
             // 로드할때 리셋
             sitterList.innerHTML = ''
             response.forEach(sitter => {
@@ -155,29 +160,7 @@ async function loadOwner(ownerId) {
 
             });
         } else {
-            // 예약버튼
-            // const reservedList = await getreservedOwner(ownerId)
-            // if (payload_parse.username in reservedList.sitter) {
-            //     // 신청 후
-            //     const reservedButton = document.createElement("button")
-            //     reservedButton.setAttribute("class", "btn btn-dark mx-2 my-2")
-            //     reservedButton.setAttribute("type", "button")
-            //     reservedButton.setAttribute("onclick", `reservedOwner(${ownerId})`)
-            //     reservedButton.innerHTML = "신청취소"
-            //     reservedButton.style.float = "right"
-            //     const buttons = document.getElementById("buttons")
-            //     buttons.appendChild(reservedButton)
-            // } else {
-            //     // 신청 전
-            //     const reservedButton = document.createElement("button")
-            //     reservedButton.setAttribute("class", "btn btn-dark mx-2 my-2")
-            //     reservedButton.setAttribute("type", "button")
-            //     reservedButton.setAttribute("onclick", `reservedOwner(${ownerId})`)
-            //     reservedButton.innerHTML = "신청하기"
-            //     reservedButton.style.float = "right"
-            //     const buttons = document.getElementById("buttons")
-            //     buttons.appendChild(reservedButton)
-            // }
+            //신청 버튼
             const reservedButton = document.createElement("button")
             reservedButton.setAttribute("class", "btn btn-dark mx-2 my-2")
             reservedButton.setAttribute("type", "button")

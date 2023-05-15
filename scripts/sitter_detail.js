@@ -35,8 +35,7 @@ async function handleUpdate(list_number, comment_id) {
 
 async function loadComments(sitterId) {
     const response = await getComments(sitterId)
-    console.log('코멘트로딩')
-    console.log(response)
+
 
     const comment_list = document.getElementById("sitter_comments")
     // 로드할때 리셋
@@ -58,7 +57,7 @@ async function loadComments(sitterId) {
 
 async function loadReviews(sitterId) {
     const response = await getSitter(sitterId)
-    console.log(response.sitterreviews)
+
 
     const review_list = document.getElementById("sitter_reviews")
     let reviews = response.sitterreviews
@@ -85,15 +84,19 @@ function sitter_update(sitterId) {
 
 async function loadSitter(sitterId) {
     const response = await getSitter(sitterId);
-    console.log(response)
+
+    //리뷰, 댓글 개수 표시
+    const reviewCount = document.getElementById(id = "reviews")
+    reviewCount.innerHTML = `리뷰⭐️ <small class="text-muted fs-6">(${response.reviews_count})</small>`
+    const commentCount = document.getElementById(id = "comments")
+    commentCount.innerHTML = `댓글💬 <small class="text-muted fs-6">(${response.comments_count})</small>`
+
+
     // 글 제목
     const sitterTitle = document.getElementById("sitter-title")
     sitterTitle.innerText = response.title
 
     // 만약 글 작성자와 동일하다면 수정/삭제 버튼 내보내기
-    // const payload = localStorage.getItem("payload")
-    // const payload_parse = JSON.parse(payload)
-    // console.log(payload_parse.user_id)
     const updateButton = document.createElement("button")
     updateButton.setAttribute("class", "btn btn-dark mx-2 my-2")
     updateButton.setAttribute("type", "button")

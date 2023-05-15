@@ -1,7 +1,7 @@
 function checkSigninPost() {
     const payload = localStorage.getItem("payload");
     const postButton = document.getElementById("sitter_post_login_check")
-    if(!(payload)){
+    if (!(payload)) {
         postButton.style.display = "none";
     }
 }
@@ -38,12 +38,13 @@ async function postSitter() {
         },
         body: formdata
     })
-    console.log(response)
+
+    const response_json = await response.json()
     if (response.status == 201) {
-        alert("글 작성 완료!")
+        alert(response_json)
         window.location.replace(`${frontend_base_url}/pet_sitter_list.html`)
     } else {
-        alert(response.statusText)
+        alert(response_json)
     }
 }
 
@@ -76,12 +77,12 @@ async function updateSitter(sitterID) {
         },
         body: formdata
     })
-    console.log(response)
+
     if (response.status == 200) {
-        alert("글 수정 완료!")
+        alert(response_json)
         window.location.replace(`${frontend_base_url}/pet_sitter_list.html?owner_id=${sitterId}`)
     } else {
-        alert(response.statusText)
+        alert(response_json)
     }
 }
 
@@ -93,12 +94,9 @@ async function deleteSitter(sitterID) {
             'Authorization': `Bearer ${token}`
         },
     })
-    if (response.status == 204) {
-        alert("글 삭제 완료!")
-        window.location.replace(`${frontend_base_url}/pet_sitter_list.html`)
-    } else {
-        alert(response.statusText)
-    }
+    const response_json = await response.json()
+    alert(response_json)
+    window.location.replace(`${frontend_base_url}/pet_sitter_list.html`)
 }
 
 async function getSitters() {
@@ -144,11 +142,14 @@ async function postComment(newComment, sitterId) {
             "content": newComment,
         })
     })
-    if (response.status == 200) {
+
+    if (response.status == 201) {
         const response_json = await response.json()
         return response_json
     } else {
-        alert(response.statusText)
+        const response_json = await response.json()
+        alert(response_json)
+
     }
 }
 
@@ -164,12 +165,9 @@ async function updateComment(newComment, commentId) {
             "content": newComment,
         })
     })
-    if (response.status == 200) {
-        alert(response.statusText)
-        window.location.replace(`${frontend_base_url}/pet_sitter_detail.html?sitter_id=${sitterId}`)
-    } else {
-        alert(response.statusText)
-    }
+    const response_json = await response.json()
+    alert(response_json)
+    window.location.replace(`${frontend_base_url}/pet_sitter_detail.html?sitter_id=${sitterId}`)
 }
 
 async function deleteComment(commentID) {
@@ -180,10 +178,7 @@ async function deleteComment(commentID) {
             'Authorization': `Bearer ${token}`
         },
     })
-    if (response.status == 204) {
-        alert("댓글 삭제 완료!")
-        window.location.replace(`${frontend_base_url}/pet_sitter_detail.html?sitter_id=${sitterId}`)
-    } else {
-        alert(response.statusText)
-    }
+    const response_json = await response.json()
+    alert(response_json)
+    window.location.replace(`${frontend_base_url}/pet_sitter_detail.html?sitter_id=${sitterId}`)
 }
