@@ -188,7 +188,7 @@ async function loadOwner(ownerId) {
     }
     // 예약날짜
     const ownerDateTime = document.getElementById("owner-datetime")
-    ownerDateTime.innerText = response.reservation_start + ' - ' + response.reservation_end
+    ownerDateTime.innerHTML = `${response.reservation_start} <br>- ${response.reservation_end}`
     // 지역
     const ownerLocation = document.getElementById("owner-location")
     ownerLocation.innerText = response.location

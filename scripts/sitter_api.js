@@ -16,8 +16,6 @@ async function postSitter() {
     const location = document.getElementById('location').value
     const species = document.getElementById('species').value
     const photo = document.getElementById('photo').files[0]
-    const reservation_start = document.getElementById('reservation_start').value
-    const reservation_end = document.getElementById('reservation_end').value
 
     const formdata = new FormData();
     formdata.append("title", title)
@@ -26,8 +24,6 @@ async function postSitter() {
     formdata.append("location", location)
     formdata.append("species", species)
     formdata.append("photo", photo)
-    formdata.append("reservation_start", reservation_start)
-    formdata.append("reservation_end", reservation_end)
 
     let token = localStorage.getItem("access")
 
@@ -55,8 +51,6 @@ async function updateSitter(sitterID) {
     const location = document.getElementById('location').value
     const species = document.getElementById('species').value
     const photo = document.getElementById('photo').files[0]
-    const reservation_start = document.getElementById('reservation_start').value
-    const reservation_end = document.getElementById('reservation_end').value
 
     const formdata = new FormData();
     formdata.append("title", title)
@@ -65,8 +59,6 @@ async function updateSitter(sitterID) {
     formdata.append("location", location)
     formdata.append("species", species)
     formdata.append("photo", photo)
-    formdata.append("reservation_start", reservation_start)
-    formdata.append("reservation_end", reservation_end)
 
     let token = localStorage.getItem("access")
 

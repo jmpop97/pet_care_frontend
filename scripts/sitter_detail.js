@@ -116,19 +116,7 @@ async function loadSitter(sitterId) {
     // 글 작성자
     const sitterWriter = document.getElementById("sitter-writer")
     sitterWriter.innerText = response.writer
-    // 예약상태
-    const sitterIsReserved = document.getElementById("sitter-isreserved")
-    sitterIsReserved.innerText = response.is_reserved
-    if (response.is_reserved == "미완료") {
-        sitterIsReserved.style.color = "red";
-    } else if (response.is_reserved == "예약중") {
-        sitterIsReserved.style.color = "#ff8040";
-    } else if (response.is_reserved == "완료") {
-        sitterIsReserved.style.color = "green";
-    }
-    // 예약날짜
-    const sitterDateTime = document.getElementById("sitter-datetime")
-    sitterDateTime.innerText = response.reservation_start + ' - ' + response.reservation_end
+
     // 지역
     const sitterLocation = document.getElementById("sitter-location")
     sitterLocation.innerText = response.location
