@@ -30,7 +30,7 @@ window.onload = async function loadMypage() {
     const payload_parse = JSON.parse(payload)
     const userId = payload_parse.user_id
     mypage = await getMypage(userId)
-    console.log(mypage)
+
 
 
     const profileemail = document.getElementById("profileemail")
@@ -43,7 +43,7 @@ window.onload = async function loadMypage() {
     profilenick_name.innerText = mypage.nick_name
 
     const profilFever = document.getElementById("fever")
-    profilFever.innerText = mypage.star_rating
+    profilFever.innerHTML = `<p>${mypage.star_rating}/5 <small class="text-muted">(${mypage.review_count})</small></p> `
 
     //오너 리뷰만들기
     const ownerreview_list = document.getElementById("owner_reviews")

@@ -38,12 +38,12 @@ async function postOwner() {
         },
         body: formdata
     })
-    console.log(response)
+    const response_json = await response.json()
     if (response.status == 201) {
-        alert("글 작성 완료!")
+        alert(response_json)
         window.location.replace(`${frontend_base_url}/pet_owner_list.html`)
     } else {
-        alert(response.statusText)
+        alert(response_json)
     }
 }
 
@@ -76,12 +76,12 @@ async function updateOwner(ownerID) {
         },
         body: formdata
     })
-    console.log(response)
+    const response_json = await response.json()
     if (response.status == 200) {
-        alert("글 수정 완료!")
+        alert(response_json)
         window.location.replace(`${frontend_base_url}/pet_owner_list.html?owner_id=${ownerId}`)
     } else {
-        alert(response.statusText)
+        alert(response_json)
     }
 }
 
@@ -93,11 +93,12 @@ async function deleteOwner(ownerID) {
             'Authorization': `Bearer ${token}`
         },
     })
+    const response_json = await response.json()
     if (response.status == 204) {
-        alert("글 삭제 완료!")
+        alert(response_json)
         window.location.replace(`${frontend_base_url}/pet_owner_list.html`)
     } else {
-        alert(response.statusText)
+        alert(response_json)
     }
 }
 
@@ -144,11 +145,11 @@ async function postComment(newComment, ownerId) {
             "content": newComment,
         })
     })
-    if (response.status == 200) {
-        const response_json = await response.json()
+    const response_json = await response.json()
+    if (response.status == 201) {
         return response_json
     } else {
-        alert(response.statusText)
+        alert(response_json)
     }
 }
 
@@ -164,11 +165,12 @@ async function updateComment(newComment, commentId) {
             "content": newComment,
         })
     })
+    const response_json = await response.json()
     if (response.status == 200) {
-        alert(response.statusText)
+        alert(response_json)
         window.location.replace(`${frontend_base_url}/pet_owner_detail.html?owner_id=${ownerId}`)
     } else {
-        alert(response.statusText)
+        alert(response_json)
     }
 }
 
@@ -181,11 +183,12 @@ async function deleteComment(commentID) {
             'Authorization': `Bearer ${token}`
         },
     })
+    const response_json = await response.json()
     if (response.status == 204) {
-        alert("댓글 삭제 완료!")
+        alert(response_json)
         window.location.replace(`${frontend_base_url}/pet_owner_detail.html?owner_id=${ownerId}`)
     } else {
-        alert(response.statusText)
+        alert(response_json)
     }
 }
 
@@ -197,11 +200,12 @@ async function reservedOwner(ownerId) {
             'Authorization': `Bearer ${token}`
         },
     })
+    const response_json = await response.json()
     if (response.status == 200) {
-        alert("신청 완료!")
+        alert(response_json)
         window.location.replace(`${frontend_base_url}/pet_owner_detail.html?owner_id=${ownerId}`)
     } else {
-        alert(response.statusText)
+        alert(response_json)
     }
 }
 
@@ -225,11 +229,11 @@ async function SitterIsSelected(ownerId, userId) {
             'Authorization': `Bearer ${token}`
         },
     })
-    console.log(response)
+    const response_json = await response.json()
     if (response.status == 200) {
-        alert("완료!")
+        alert(response_json)
         window.location.replace(`${frontend_base_url}/pet_owner_detail.html?owner_id=${ownerId}`)
     } else {
-        alert(response.statusText)
+        alert(response_json)
     }
 }
