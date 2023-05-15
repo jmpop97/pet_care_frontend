@@ -25,9 +25,17 @@
       요금
       <input type="number" class="form-control mb-4" id="charge" min="0" placeholder="요금을 입력해 주세요." style="width: 100%;">
       지역
-      <input type="text" class="form-control mb-4" id="location" placeholder="시/도 - 시/군/구">
-      품종
-      <input type="text" class="form-control mb-4" id="species" placeholder="반려동물 종">
+      <input type="text" class="form-control mb-4" id="location" placeholder="시/도를 입력해주세요.">
+      <container class = "rel_search" id="location_container">
+        <ul class="pop_rel_keywords" id="location_ul">
+        </ul>
+      </container>
+      반려동물 품종
+      <input type="text" class="form-control mb-4" id="species" placeholder="강아지, 고양이, 포유류, 조류, 파충류, 어류, 양서류, 설치류, 기타 로 검색해주세요.">
+      <container class = "rel_search" id="species_container">
+        <ul class="pop_rel_keywords" id="species_ul">
+        </ul>
+      </container>
       첨부사진
       <input class="form-control form-control-sm mb-4" id="photo" type="file">
       예약시작일
@@ -36,17 +44,11 @@
       <input type="datetime-local" class="form-control mb-4" id="reservation_end" placeholder="예약종료일을 입력해주세요.">
       <!-- <button type="button" onclick="postOwner()">작성하기</button>
       <button type="button" onclick="updateOwner()">수정하기</button> -->
-            
-      <input class= "search_input">
-      <container class = "rel_search">
-          <ul class="pop_rel_keywords">
-          </ul>
-      </container>
-      
     </form>
   </div>
   <script src="/scripts/base_url.js"></script>
-  <script src="/scripts/autocomplete.js"></script>
+  <script src="/scripts/auto_complete_location.js"></script>
+  <script src="/scripts/auto_complete_species.js"></script>
   <script src="/scripts/owner_api.js"></script>
   <script src="/scripts/owner_update.js"></script>
   <script src="scripts/header.js"></script>

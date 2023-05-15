@@ -1,7 +1,7 @@
 function checkSigninPost() {
     const payload = localStorage.getItem("payload");
     const postButton = document.getElementById("owner_post_login_check")
-    if(!(payload)){
+    if (!(payload)) {
         postButton.style.display = "none";
     }
 }
@@ -183,6 +183,51 @@ async function deleteComment(commentID) {
     })
     if (response.status == 204) {
         alert("댓글 삭제 완료!")
+        window.location.replace(`${frontend_base_url}/pet_owner_detail.html?owner_id=${ownerId}`)
+    } else {
+        alert(response.statusText)
+    }
+}
+
+async function reservedOwner(ownerId) {
+    let token = localStorage.getItem("access")
+    const response = await fetch(`${backend_base_url}/owner/${ownerId}/reservation/`, {
+        method: 'POST',
+        headers: {
+            'Authorization': `Bearer ${token}`
+        },
+    })
+    if (response.status == 200) {
+        alert("신청 완료!")
+        window.location.replace(`${frontend_base_url}/pet_owner_detail.html?owner_id=${ownerId}`)
+    } else {
+        alert(response.statusText)
+    }
+}
+
+async function getreservedOwner(ownerId) {
+    let token = localStorage.getItem("access")
+    const response = await fetch(`${backend_base_url}/owner/${ownerId}/reservation/`, {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${token}`
+        },
+    })
+    const response_json = await response.json()
+    return response_json
+}
+
+async function SitterIsSelected(ownerId, userId) {
+    let token = localStorage.getItem("access")
+    const response = await fetch(`${backend_base_url}/owner/${ownerId}/reservation/${userId}/`, {
+        method: 'PUT',
+        headers: {
+            'Authorization': `Bearer ${token}`
+        },
+    })
+    console.log(response)
+    if (response.status == 200) {
+        alert("완료!")
         window.location.replace(`${frontend_base_url}/pet_owner_detail.html?owner_id=${ownerId}`)
     } else {
         alert(response.statusText)
