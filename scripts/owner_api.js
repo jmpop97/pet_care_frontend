@@ -40,7 +40,7 @@ async function postOwner() {
     })
     const response_json = await response.json()
     if (response.status == 201) {
-        alert(response_json)
+        alert("글 작성 완료")
         window.location.replace(`${frontend_base_url}/pet_owner_list.html`)
     } else {
         alert(response_json)
@@ -78,7 +78,7 @@ async function updateOwner(ownerID) {
     })
     const response_json = await response.json()
     if (response.status == 200) {
-        alert(response_json)
+        alert("글 수정 완료")
         window.location.replace(`${frontend_base_url}/pet_owner_list.html?owner_id=${ownerId}`)
     } else {
         alert(response_json)
@@ -94,11 +94,12 @@ async function deleteOwner(ownerID) {
         },
     })
     const response_json = await response.json()
+    console.log(response_json)
     if (response.status == 204) {
-        alert(response_json)
+        alert("게시글이 삭제되었습니다")
         window.location.replace(`${frontend_base_url}/pet_owner_list.html`)
     } else {
-        alert(response_json)
+        alert(response.statusText)
     }
 }
 
@@ -167,10 +168,10 @@ async function updateComment(newComment, commentId) {
     })
     const response_json = await response.json()
     if (response.status == 200) {
-        alert(response_json)
+        alert("수정이 완료되었습니다")
         window.location.replace(`${frontend_base_url}/pet_owner_detail.html?owner_id=${ownerId}`)
     } else {
-        alert(response_json)
+        alert(response.statusText)
     }
 }
 
@@ -183,12 +184,11 @@ async function deleteComment(commentID) {
             'Authorization': `Bearer ${token}`
         },
     })
-    const response_json = await response.json()
     if (response.status == 204) {
-        alert(response_json)
+        alert("삭제되었습니다")
         window.location.replace(`${frontend_base_url}/pet_owner_detail.html?owner_id=${ownerId}`)
     } else {
-        alert(response_json)
+        alert(response.statusText)
     }
 }
 

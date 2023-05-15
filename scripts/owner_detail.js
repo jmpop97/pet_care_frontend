@@ -47,9 +47,9 @@ async function loadComments(ownerID) {
         let list_number = comment_list.getElementsByTagName("li").length + 1
         comment_list.innerHTML += `
         <li class="media my-4" id="${list_number}th-comment">
-            <div class="media-body" >
+            <div class="media-body" id="${list_number}th-body">
             <h5 class="mt-0 mb-1">${comment.writer}</h5>
-            <p class="margin-b">${comment.content}</p>
+            <p class="margin-b" id="${list_number}th-content">${comment.content}</p>
             <p class="margin-b"><small class="text-muted">${comment.created_at}</small></p>
             <p><button class="text-muted btn" onclick="handleUpdate(${list_number},${comment.id})">수정</button>|<button class="text-muted btn" onclick="deleteComment(${comment.id})">삭제</button></p>
             </div>
