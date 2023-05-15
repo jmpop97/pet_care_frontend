@@ -1,6 +1,10 @@
 # pet_care_frontend
 Backend : https://github.com/jmpop97/pet_care
+
+![petcare](https://github.com/nueeng/pet_care_frontend/assets/127704498/0a348e9b-d0f2-47a3-a29d-cca09811ee0f)
+
 </br>
+
 ## Target
 https://www.figma.com/file/qBrLy5BJyRnKLNZ32xrj5O/Pet_care?type=design&node-id=0-1&t=nCaJG7kh4YvVewX7-0
 
@@ -27,6 +31,6 @@ https://www.figma.com/file/qBrLy5BJyRnKLNZ32xrj5O/Pet_care?type=design&node-id=0
 19. console.log 삭제
 20. validation 못한 곳이 좀 많은상황 json화 한뒤 백엔드에서 온 메시지 띄우는법 강의받기
 
-## Index페이지 제작
+## Index 페이지 제작
 https://github.com/Eunnylog<br/>
 https://github.com/Kminy98
