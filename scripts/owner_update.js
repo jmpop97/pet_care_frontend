@@ -4,7 +4,7 @@ window.onload = async function () {
     ownerId = urlParams.get('owner_id');
     if (ownerId) {
         const response = await getOwner(ownerId);
-        console.log(response)
+
         //버튼 수정하기로 바꿔주기
         const updateButton = document.createElement("button")
         updateButton.setAttribute("class", "btn btn-dark")

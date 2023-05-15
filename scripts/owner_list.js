@@ -6,7 +6,7 @@ function owner_detail(owner_id) {
 
 window.onload = async function loadOwners() {
     owners = await getOwners()
-    console.log(owners)
+
 
     const owner_list = document.getElementById("owner_list")
     owners.forEach(owner => {
