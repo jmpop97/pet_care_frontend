@@ -36,11 +36,12 @@ async function postSitter() {
     })
 
     const response_json = await response.json()
+
     if (response.status == 201) {
-        alert(response_json)
+        alert("글 작성 완료")
         window.location.replace(`${frontend_base_url}/pet_sitter_list.html`)
     } else {
-        alert(response_json)
+        alert(response.statusText)
     }
 }
 
@@ -71,10 +72,10 @@ async function updateSitter(sitterID) {
     })
 
     if (response.status == 200) {
-        alert(response_json)
+        alert("글 수정 완료")
         window.location.replace(`${frontend_base_url}/pet_sitter_list.html?owner_id=${sitterId}`)
     } else {
-        alert(response_json)
+        alert(response.statusText)
     }
 }
 
@@ -86,9 +87,13 @@ async function deleteSitter(sitterID) {
             'Authorization': `Bearer ${token}`
         },
     })
-    const response_json = await response.json()
-    alert(response_json)
-    window.location.replace(`${frontend_base_url}/pet_sitter_list.html`)
+
+    if (response.status == 204) {
+        alert("게시글이 삭제되었습니다")
+        window.location.replace(`${frontend_base_url}/pet_sitter_list.html`)
+    } else {
+        alert(response.statusText)
+    }
 }
 
 async function getSitters() {
@@ -140,7 +145,7 @@ async function postComment(newComment, sitterId) {
         return response_json
     } else {
         const response_json = await response.json()
-        alert(response_json)
+        alert(response.statusText)
 
     }
 }
@@ -157,8 +162,7 @@ async function updateComment(newComment, commentId) {
             "content": newComment,
         })
     })
-    const response_json = await response.json()
-    alert(response_json)
+    alert("수정이 완료되었습니다")
     window.location.replace(`${frontend_base_url}/pet_sitter_detail.html?sitter_id=${sitterId}`)
 }
 
@@ -170,7 +174,8 @@ async function deleteComment(commentID) {
             'Authorization': `Bearer ${token}`
         },
     })
-    const response_json = await response.json()
-    alert(response_json)
+
+    alert("삭제되었습니다"
+    )
     window.location.replace(`${frontend_base_url}/pet_sitter_detail.html?sitter_id=${sitterId}`)
 }
