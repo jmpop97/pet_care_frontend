@@ -26,3 +26,7 @@ https://www.figma.com/file/qBrLy5BJyRnKLNZ32xrj5O/Pet_care?type=design&node-id=0
 18. 예약 신청 후에 신청이 되었으면 신청버튼을 취소하기 버튼으로 바꾸고 싶은데 방법이 안 떠올라요ㅠㅠㅠ
 19. console.log 삭제
 20. validation 못한 곳이 좀 많은상황 json화 한뒤 백엔드에서 온 메시지 띄우는법 강의받기
+
+## Index페이지 제작
+https://github.com/Eunnylog<br/>
+https://github.com/Kminy98
