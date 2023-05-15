@@ -1,7 +1,7 @@
 # pet_care_frontend
 Backend : https://github.com/jmpop97/pet_care
 
-![petcare](https://github.com/nueeng/pet_care_frontend/assets/127704498/0a348e9b-d0f2-47a3-a29d-cca09811ee0f)
+![pet_care1](https://github.com/nueeng/pet_care_frontend/assets/127704498/3b454d72-e403-4eb6-ba3a-af0d79eb0860)
 
 </br>
 
