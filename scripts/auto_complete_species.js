@@ -30,9 +30,7 @@ const speciesTimer = (speciesBeforeInput) => {
 }
 
 const speciesLoadData = (input) => {
-  const [species, breeds = ""] = input.split(" "); // 입력된 값을 공백을 기준으로 분리하여 species와 breeds 변수에 할당하되, breeds는 기본값 ""으로 설정
-  const speciesUrl = `${backend_base_url}/owner/species?species=${species}&breeds=${breeds}`; // 새로운 URL 생성
-
+  const speciesUrl = `${backend_base_url}/owner/species?speciessearch=${input}`; // 새로운 URL 생성
   if (speciesCache === speciesUrl) return;
   speciesCache = speciesUrl;
 
@@ -71,13 +69,13 @@ const speciesFillSearch = (suggestArr) => {
   }
 };
 
-const speciesInputIsSameAsSuggestion = (species, breeds) => {
-  const [inputSpecies, inputBreeds = ""] = speciesSearchInput.value.split(" ");
-  return species === inputSpecies && breeds === inputBreeds;
+const speciesInputIsSameAsSuggestion = (speciessearch) => {
+  const [inputSpeciessearch = ""] = speciesSearchInput.value;
+  return speciessearch === inputSpeciessearch;
 };
 
-const setSpeciesSearchInputValue = (species, breeds) => {
-  speciesSearchInput.value = `${species} ${breeds}`;
+const setSpeciesSearchInputValue = (speciessearch) => {
+  speciesSearchInput.value = `${speciessearch}`;
 };
 
 speciesUl.addEventListener('click', (event) => {
