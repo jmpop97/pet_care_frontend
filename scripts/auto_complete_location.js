@@ -30,8 +30,7 @@ const timer = (beforeInput) => {
 }
 
 const loadData = (input) => {
-  const [city, state = ""] = input.split(" "); // 입력된 값을 공백을 기준으로 분리하여 city와 state 변수에 할당하되, state는 기본값 ""으로 설정
-  const url = `${backend_base_url}/owner/location?city=${city}&state=${state}`; // 새로운 URL 생성
+  const url = `${backend_base_url}/owner/location?locationsearch=${input}`; // 새로운 URL 생성
   if (cache === url) return;
   else {
     cache = url;
@@ -71,13 +70,13 @@ const fillSearch = (suggestArr) => {
   }
 };
 
-const inputIsSameAsSuggestion = (city, state) => {
-  const [inputCity, inputState = ""] = searchInput.value.split(" ");
-  return city === inputCity && state === inputState;
+const inputIsSameAsSuggestion = (locationsearch) => {
+  const [inputLocationSearch = ""] = searchInput.value;
+  return locationsearch === inputLocationSearch;
 };
 
-const setSearchInputValue = (city, state) => {
-  searchInput.value = `${city} ${state}`;
+const setSearchInputValue = (locationsearch) => {
+  searchInput.value = `${locationsearch}`;
 };
 
 ul.addEventListener('click', (event) => {
